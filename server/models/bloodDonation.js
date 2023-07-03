@@ -6,6 +6,14 @@ const Donation = new mongoose.Schema({
     type: String,
     require: true,
   },
+  address: {
+    type: String,
+    require: true,
+  },
+  birthDay: {
+    type: String,
+    require: true,
+  },
   donorId: {
     type: String,
     require: true,
@@ -18,6 +26,14 @@ const Donation = new mongoose.Schema({
     type: String,
     require: true,
   },
+  isExpired: {
+    type: Boolean,
+    require: true,
+  },
+  email:{
+    type:String,
+    require:true
+  }
 });
 
 module.exports = mongoose.model("donation", Donation);
