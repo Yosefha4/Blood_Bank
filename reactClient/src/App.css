@@ -27,16 +27,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-image: linear-gradient(
-  270deg,
-  hsl(0deg 0% 100%) 0%,
-  hsl(0deg 66% 66%) 29%,
-  hsl(0deg 59% 50%) 43%,
-  hsl(0deg 59% 50%) 57%,
-  hsl(0deg 66% 66%) 71%,
-  hsl(0deg 0% 100%) 100%
-);
-}
+  /* background-color: #e75050; */
+  background-image: linear-gradient(to bottom, #d93434, #e96063, #f3888f, #f8aeb8, #f8d4db);}
 
 header {
   display: flex;
@@ -60,21 +52,34 @@ header {
 }
 
 nav a {
-  margin: 0 2rem;
+  margin: 0 1rem;
   color: var(--textColor);
+  /* color: black; */
+  font-weight: bold;
   text-decoration: none;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   font-size: 22px;
   font-style: inherit;
+  display: inline-block;
+
+  /* height: 40px; */
+  border: 2px solid ;
+  border-color: white ; /* red top, green right, blue bottom and yellow left */
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 6px;
+
 }
 h3:hover {
-  color: white;
+  color: #fd5c63;
   font-size: 1.7rem;
   text-shadow: 1px 1px 1px #000, 
   3px 3px 5px white; 
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
 }
 h3 {
-  color: red;
+  color: white;
   font-size: 1.7rem;
   text-shadow: 1px 1px 1px #000, 
   3px 3px 5px black; 
@@ -314,15 +319,16 @@ header .navBtn {
   position: relative;
   left: 0;
   font-size: 18px;
-  text-shadow: black 1px 2px;
+  text-shadow: white 1px 2px;
 
   bottom: 0;
   right: 0;
   text-align: center;
   align-items: center;
-  color: white;
+  color: #000000;
   font-weight: bold;
-  background-image: linear-gradient(
+  background-color: transparent;
+   /* background-image: linear-gradient(
     270deg,
     hsl(0deg 0% 100%) 0%,
     hsl(0deg 66% 66%) 29%,
@@ -330,7 +336,7 @@ header .navBtn {
     hsl(0deg 59% 50%) 57%,
     hsl(0deg 66% 66%) 71%,
     hsl(0deg 0% 100%) 100%
-  );
+  ); */
 /* background-color: white; */
   /* background: linear-gradient(
     0deg,

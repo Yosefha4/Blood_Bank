@@ -82,7 +82,7 @@ const Navbar = () => {
           >
             LogOut
           </button>
-          <a style={{borderColor:'black',borderWidth:1, color:'white', textShadow:'2px 2px black', fontWeight:'bold'}} >
+          <a style={{border:'none', color:'white', textShadow:'2px 2px black', fontWeight:'bold'}} >
           Hello : {currentName} - ({window.localStorage.getItem("userType")})
           </a>
           </>
