@@ -4,23 +4,18 @@ const bcrypt = require('bcrypt');
 //import donation model
 const bloodDonation = require("../models/bloodDonation");
 
+
 //create the first route --> the "add" router
 router.post("/api/donation", async (req, res) => {
   try {
-    const encryptedName = await bcrypt.hash(req.body.name, 10);
-    const encryptedAddress = await bcrypt.hash(req.body.address, 10);
-    const encryptedBirthDay = await bcrypt.hash(req.body.birthDay, 10);
-    const encryptedDonorId = await bcrypt.hash(req.body.donorId, 10);
-    const encryptedEmail = await bcrypt.hash(req.body.email, 10);
-    
     const newDonation = new bloodDonation({
-      name: encryptedName,
-      address: encryptedAddress,
-      birthDay: encryptedBirthDay,
-      donorId: encryptedDonorId,
+      name: req.body.name,
+      address: req.body.address,
+      birthDay: req.body.birthDay,
+      donorId: req.body.donorId,
       donationDate: new Date().toDateString(),
       bloodType: req.body.bloodType,
-      email: encryptedEmail,
+      email: req.body.email,
       isExpired: false,
     });
 
@@ -30,6 +25,33 @@ router.post("/api/donation", async (req, res) => {
     res.json(error);
   }
 });
+
+// //create the first route --> the "add" router
+// router.post("/api/donation", async (req, res) => {
+//   try {
+//     const encryptedName = await bcrypt.hash(req.body.name, 10);
+//     const encryptedAddress = await bcrypt.hash(req.body.address, 10);
+//     const encryptedBirthDay = await bcrypt.hash(req.body.birthDay, 10);
+//     const encryptedDonorId = await bcrypt.hash(req.body.donorId, 10);
+//     const encryptedEmail = await bcrypt.hash(req.body.email, 10);
+    
+//     const newDonation = new bloodDonation({
+//       name: encryptedName,
+//       address: encryptedAddress,
+//       birthDay: encryptedBirthDay,
+//       donorId: encryptedDonorId,
+//       donationDate: new Date().toDateString(),
+//       bloodType: req.body.bloodType,
+//       email: encryptedEmail,
+//       isExpired: false,
+//     });
+
+//     const saveDonation = await newDonation.save();
+//     res.status(200).json("Donation Added Successfully. Thank You!");
+//   } catch (error) {
+//     res.json(error);
+//   }
+// });
 
 // // Create route to get donation data
 // router.get('/api/donation', async (req, res) => {
@@ -77,6 +99,38 @@ router.get("/api/donation/:bloodType", async (req, res) => {
   }
 });
 
+// //delete from db() by blood type
+// router.delete("/api/donation/:bloodType", async (req, res) => {
+//   try {
+//     //find the item we want and delete it
+//     const deleteItem = await bloodDonation.findOneAndDelete({
+//       bloodType: req.params.bloodType,
+//     });
+//     if (deleteItem) {
+//       // Decrypt the sensitive fields before sending the response
+//       const decryptedItem = {
+//         name: bcrypt.compareSync(deleteItem.name, req.body.name) ? req.body.name : '**********',
+//         address: bcrypt.compareSync(deleteItem.address, req.body.address) ? req.body.address : '**********',
+//         birthDay: bcrypt.compareSync(deleteItem.birthDay, req.body.birthDay) ? req.body.birthDay : '**********',
+//         donorId: bcrypt.compareSync(deleteItem.donorId, req.body.donorId) ? req.body.donorId : '**********',
+//         donationDate: deleteItem.donationDate,
+//         bloodType: bcrypt.compareSync(deleteItem.bloodType, req.body.bloodType) ? req.body.bloodType : '**********',
+//         email: bcrypt.compareSync(deleteItem.email, req.body.email) ? req.body.email : '**********',
+//         isExpired: deleteItem.isExpired,
+//       };
+//       res.status(200).json("Item Deleted . The donate : " + decryptedItem);
+
+//     }
+//     // if (deleteItem) {
+//     //   res.status(200).json("Item Deleted . The donate : " + deleteItem);
+//     // } 
+//     else {
+//       console.log("Dont find item to delete .");
+//     }
+//   } catch (error) {
+//     res.json(error);
+//   }
+// });
 //delete from db() by blood type
 router.delete("/api/donation/:bloodType", async (req, res) => {
   try {
@@ -85,25 +139,9 @@ router.delete("/api/donation/:bloodType", async (req, res) => {
       bloodType: req.params.bloodType,
     });
     if (deleteItem) {
-      // Decrypt the sensitive fields before sending the response
-      const decryptedItem = {
-        name: bcrypt.compareSync(deleteItem.name, req.body.name) ? req.body.name : '**********',
-        address: bcrypt.compareSync(deleteItem.address, req.body.address) ? req.body.address : '**********',
-        birthDay: bcrypt.compareSync(deleteItem.birthDay, req.body.birthDay) ? req.body.birthDay : '**********',
-        donorId: bcrypt.compareSync(deleteItem.donorId, req.body.donorId) ? req.body.donorId : '**********',
-        donationDate: deleteItem.donationDate,
-        bloodType: bcrypt.compareSync(deleteItem.bloodType, req.body.bloodType) ? req.body.bloodType : '**********',
-        email: bcrypt.compareSync(deleteItem.email, req.body.email) ? req.body.email : '**********',
-        isExpired: deleteItem.isExpired,
-      };
-      res.status(200).json("Item Deleted . The donate : " + decryptedItem);
-
-    }
-    // if (deleteItem) {
-    //   res.status(200).json("Item Deleted . The donate : " + deleteItem);
-    // } 
-    else {
-      console.log("Dont find item to delete .");
+      res.status(200).json("Item Deleted . The donate : " + deleteItem);
+    } else {
+      console.log("first");
     }
   } catch (error) {
     res.json(error);
