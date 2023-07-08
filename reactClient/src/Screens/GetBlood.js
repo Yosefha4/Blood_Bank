@@ -63,6 +63,7 @@ const GetBlood = () => {
             console.log("update expired flag of blood unit add to information ",expiredInfo)
             axios.post("http://localhost:5500/api/logInfo", {
               info: expiredInfo,
+              bdDate: new Date().toDateString(),
             });
   
           } catch (error) {

@@ -5,12 +5,12 @@ const cron = require('node-cron');
 const router = require("express").Router();
 
 router.post("/api/sendMail", async (req, res) => {
-  const { email } = req.body;
+  const { email,emailMessage } = req.body;
 
   try {
     const sendTo = email;
     const sendFrom = process.env.EMAIL_USER;
-    const subject = "Reminder - The Blood Bank!";
+    const subject = "Blood Bank!";
     // Design the message with styles
     const message = `
       <h3 style="color: #ff0000;">Hello User</h3>
@@ -22,7 +22,7 @@ router.post("/api/sendMail", async (req, res) => {
 
       `;
 
-    await sendEmail(subject, message, sendTo, sendFrom);
+    await sendEmail(subject, emailMessage, sendTo, sendFrom);
     res.status(200).json({ success: true, message: "Email Sent Success !" });
   } catch (error) {
     res.status(500).json(error.message);

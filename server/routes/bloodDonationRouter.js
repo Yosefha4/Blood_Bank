@@ -1,30 +1,70 @@
 const router = require("express").Router();
 const bcrypt = require('bcrypt');
+const CryptoJS = require("crypto-js");
+
 
 //import donation model
 const bloodDonation = require("../models/bloodDonation");
 
 
-//create the first route --> the "add" router
-router.post("/api/donation", async (req, res) => {
-  try {
-    const newDonation = new bloodDonation({
-      name: req.body.name,
-      address: req.body.address,
-      birthDay: req.body.birthDay,
-      donorId: req.body.donorId,
-      donationDate: new Date().toDateString(),
-      bloodType: req.body.bloodType,
-      email: req.body.email,
-      isExpired: false,
-    });
+// Encrypt function using AES
+function encryptData(data, secretKey) {
+  const encryptedData = CryptoJS.AES.encrypt(data, secretKey).toString();
+  return encryptedData;
+}
 
-    const saveDonation = await newDonation.save();
-    res.status(200).json("Donation Added Successfully. Thank You!");
-  } catch (error) {
+// Decrypt function using AES
+function decryptData(encryptedData, secretKey) {
+  const decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey).toString(CryptoJS.enc.Utf8);
+  return decryptedData;
+}
+
+//Create new post route , with crypto-js library .
+router.post("/api/donation",async(req,res) =>{
+ try {
+  // Encrypt the sensitive data before storing it in the database
+  const encryptedName = encryptData(req.body.name, "your-secret-key");
+  const encryptedAddress = encryptData(req.body.address, "your-secret-key");
+  const encryptedBirthDay = encryptData(req.body.birthDay, "your-secret-key");
+  const encryptedDonorId = encryptData(req.body.donorId, "your-secret-key");
+
+  const newDonation = new bloodDonation({
+    name: encryptedName,
+    address: encryptedAddress,
+    birthDay: encryptedBirthDay,
+    donorId: encryptedDonorId,
+    donationDate: new Date().toDateString(),
+    bloodType: req.body.bloodType,
+    email: req.body.email,
+    isExpired: false,
+  });
+  await newDonation.save();
+  res.status(200).json("Donation Added Successfully. Thank You!");
+ } catch (error) {
     res.json(error);
-  }
-});
+ }
+})
+
+//create the first route --> the "add" router
+// router.post("/api/donation", async (req, res) => {
+//   try {
+//     const newDonation = new bloodDonation({
+//       name: req.body.name,
+//       address: req.body.address,
+//       birthDay: req.body.birthDay,
+//       donorId: req.body.donorId,
+//       donationDate: new Date().toDateString(),
+//       bloodType: req.body.bloodType,
+//       email: req.body.email,
+//       isExpired: false,
+//     });
+
+//     const saveDonation = await newDonation.save();
+//     res.status(200).json("Donation Added Successfully. Thank You!");
+//   } catch (error) {
+//     res.json(error);
+//   }
+// });
 
 // //create the first route --> the "add" router
 // router.post("/api/donation", async (req, res) => {

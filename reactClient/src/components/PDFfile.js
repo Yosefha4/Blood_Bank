@@ -10,7 +10,6 @@ import {
 import ImagePdf from "../assets/bbLogo.png";
 import axios from "axios";
 
-import { Table, Typography } from "antd";
 
 
 
@@ -46,7 +45,7 @@ const PDFfile = () => {
               <Text
                 style={[
                   styles.activityNumber,
-                  item.info.includes("donate") ? styles.redText : styles.greenText,
+                  item.info.includes("Updating") ? styles.blueText : item.info.includes("donate") ? styles.redText : styles.greenText,
                 ]}
               >
                 {index + 1}
@@ -120,5 +119,8 @@ const styles = StyleSheet.create({
   },
   greenText: {
     color: "green",
+  },
+  blueText: {
+    color: "blue",
   },
 });

@@ -16,7 +16,7 @@ const LogInfo = new mongoose.Schema({
   },
   bdDate: {
     type: String,
-    require: false,
+    require: true,
   },
 });
 

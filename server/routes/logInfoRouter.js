@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const logInfo = require("../models/logInfo");
 const bcrypt = require('bcrypt');
+const CryptoJS = require("crypto-js");
 
 
 // // Create route to add log info
@@ -24,6 +25,10 @@ const bcrypt = require('bcrypt');
 //   }
 // });
 
+//------------------------------------------------------------------------------------
+
+
+
 router.post("/api/logInfo", async (req, res) => {
   try {
     const newLogInfo = new logInfo({
@@ -39,6 +44,35 @@ router.post("/api/logInfo", async (req, res) => {
     res.json(error);
   }
 });
+
+// Encrypt function using AES
+function encryptData(data, secretKey) {
+  const encryptedData = CryptoJS.AES.encrypt(data, secretKey).toString();
+  return encryptedData;
+}
+
+// router.post("/api/logCrypt", async (req, res) => {
+//   try {
+//     const { info, email ,bdDate} = req.body;
+//     const encryptedInfo = encryptData(info, "your-secret-key");
+
+//     const newLogInfo = new logInfo({
+//       info: encryptedInfo,
+//       email: email,
+//       bdDate: bdDate,
+//     });
+//     await newLogInfo.save();
+//     res.status(200).json("Log Information Added Successfully.");
+//     console.log('logInfoSuccess')
+//     // ... Handle the response
+//   } catch (error) {
+//     res.json(error);
+//     console.log('logInfoError')
+
+//   }
+// });
+//---------------------------------------------------------------------------------------
+
 
 // // Create route to get log info PDF
 // router.get('/api/logInfoCrypt', async (req, res) => {
@@ -107,5 +141,29 @@ router.get("/api/logInfo" , async (req,res) =>{
 
     }
 })
+
+// Decrypt function using AES
+function decryptData(encryptedData, secretKey) {
+  const decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey).toString(CryptoJS.enc.Utf8);
+  return decryptedData;
+}
+
+// router.get("/api/logInfoCrypt", async (req, res) => {
+//   try {
+//     const logInfoData = await logInfo.find({});
+
+//     const decryptedLogInfo = logInfoData.map((item) => {
+//       const decryptedInfo = decryptData(item.info, "your-secret-key");
+//       return {
+//         ...item.toObject(),
+//         info: decryptedInfo,
+//       };
+//     });
+
+//     res.status(200).json(decryptedLogInfo);
+//   } catch (error) {
+//     res.json(error);
+//   }
+// });
 
 module.exports = router;

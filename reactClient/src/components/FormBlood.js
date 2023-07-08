@@ -22,6 +22,16 @@ const FormBlood = () => {
   const [bloodType, setBloodType] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
+  const tnxMessage = `
+  <h3 style="color: #ff0000;">Thank you ${dName} !</h3>
+
+  <p style="font-size: 16px;">Your blood donation has been successfully saved in our blood bank system.</p>
+  <img src="https://health.gov.tt/sites/default/files/styles/large/public/inline-images/Blood%20Bank%20logo%202022-03.png?itok=0H-a6QNb" alt="Blood Bank Image" width="200" height="120" >
+  <p style="font-style: italic;">Regards, 'Blood Bank SCE'</p>
+
+
+  `;
+
   // function add new donation to db
   const addDonateBlood = async (e) => {
     if (!dName || !dId || !bloodType || bloodType === "") {
@@ -30,6 +40,21 @@ const FormBlood = () => {
     } else {
       // e.preventDefault();
       try {
+        //add check exsit 
+        // Check if the email or donor ID already exists in the donation documents
+        const existingDonations = await axios.get("http://localhost:5500/api/donation");
+        const existingEmails = existingDonations.data.filter((donation) => donation.email === userEmail);
+        const existingDonorIDs = existingDonations.data.filter((donation) => donation.donorId === dId);
+
+        if (existingEmails.length > 0 || existingDonorIDs.length > 0) {
+          console.log("User cannot donate blood again until at least 3 months have passed since the last donation");
+          alert('User cannot donate blood again until at least 3 months have passed since the last donation');
+          return;
+        }
+
+        
+        //finish cahnges
+
         const res = await axios.post("http://localhost:5500/api/donation", {
           name: dName,
           address: dAddress,
@@ -39,7 +64,25 @@ const FormBlood = () => {
           email: userEmail,
         });
 
-        const testInformation ="Action : Donate | " + "Name: " + dName + " | " + " Address: " + dAddress +  " | " +    "BirthDay: " +       dBirthDay +    " | " +   "Donor Id: " +  dId +    " | " +  "Blood Type: " +  bloodType +     " | " +  "Date: " +  new Date().toDateString();
+        const testInformation =
+          "Action : Donate | " +
+          "Name: " +
+          dName +
+          " | " +
+          " Address: " +
+          dAddress +
+          " | " +
+          "BirthDay: " +
+          dBirthDay +
+          " | " +
+          "Donor Id: " +
+          dId +
+          " | " +
+          "Blood Type: " +
+          bloodType +
+          " | " +
+          "Date: " +
+          new Date().toDateString();
 
         await axios.post("http://localhost:5500/api/logInfo", {
           info: testInformation,
@@ -49,6 +92,12 @@ const FormBlood = () => {
 
         console.log(res);
         console.log("Donate Info : " + testInformation);
+
+        await axios.post("http://localhost:5500/api/sendMail", {
+          email: userEmail,
+          emailMessage: tnxMessage,
+        });
+
         return alert(
           "Success. Thank you !    " +
             res.config.data +
@@ -70,7 +119,7 @@ const FormBlood = () => {
   return (
     <div className="formContainer">
       <Title level={2} className="heading">
-      Donation Details
+        Donation Details
       </Title>
 
       <Form
