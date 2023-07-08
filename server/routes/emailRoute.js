@@ -12,17 +12,18 @@ router.post("/api/sendMail", async (req, res) => {
     const sendFrom = process.env.EMAIL_USER;
     const subject = "Blood Bank!";
     // Design the message with styles
-    const message = `
-      <h3 style="color: #ff0000;">Hello User</h3>
+    const message = emailMessage;
+    // const message = `
+    //   <h3 style="color: #ff0000;">Hello User</h3>
     
-      <p style="font-size: 16px;">We wanted to remind you that in exactly one week you will be able to donate blood again to our blood bank system! We will be happy if you make an appointment/arrive as soon as possible.</p>
-      <img src="https://health.gov.tt/sites/default/files/styles/large/public/inline-images/Blood%20Bank%20logo%202022-03.png?itok=0H-a6QNb" alt="Blood Bank Image" width="200" height="120" >
-      <p style="font-style: italic;">Regards, 'Blood Bank SCE'</p>
+    //   <p style="font-size: 16px;">We wanted to remind you that in exactly one week you will be able to donate blood again to our blood bank system! We will be happy if you make an appointment/arrive as soon as possible.</p>
+    //   <img src="https://health.gov.tt/sites/default/files/styles/large/public/inline-images/Blood%20Bank%20logo%202022-03.png?itok=0H-a6QNb" alt="Blood Bank Image" width="200" height="120" >
+    //   <p style="font-style: italic;">Regards, 'Blood Bank SCE'</p>
 
 
-      `;
+    //   `;
 
-    await sendEmail(subject, emailMessage, sendTo, sendFrom);
+    await sendEmail(subject, message, sendTo, sendFrom);
     res.status(200).json({ success: true, message: "Email Sent Success !" });
   } catch (error) {
     res.status(500).json(error.message);

@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 //Port
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 8000;
 
 //Use express.json() to get data into json format
 app.use(express.json());
