@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Col,
@@ -6,7 +6,6 @@ import {
   Form,
   Select,
   Button,
-  Alert,
   DatePicker,
 } from "antd";
 import axios from "axios";
@@ -42,7 +41,7 @@ const FormBlood = () => {
       try {
         //add check exsit 
         // Check if the email or donor ID already exists in the donation documents
-        const existingDonations = await axios.get("http://localhost:5500/api/donation");
+        const existingDonations = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
         const existingEmails = existingDonations.data.filter((donation) => donation.email === userEmail);
         const existingDonorIDs = existingDonations.data.filter((donation) => donation.donorId === dId);
 
@@ -55,7 +54,7 @@ const FormBlood = () => {
         
         //finish cahnges
 
-        const res = await axios.post("http://localhost:5500/api/donation", {
+        const res = await axios.post("https://blood-bank-2023.onrender.com/api/donation", {
           name: dName,
           address: dAddress,
           birthDay: dBirthDay,
@@ -84,7 +83,7 @@ const FormBlood = () => {
           "Date: " +
           new Date().toDateString();
 
-        await axios.post("http://localhost:5500/api/logInfo", {
+        await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
           info: testInformation,
           email: userEmail,
           bdDate: new Date().toDateString(),
@@ -93,7 +92,7 @@ const FormBlood = () => {
         console.log(res);
         console.log("Donate Info : " + testInformation);
 
-        await axios.post("http://localhost:5500/api/sendMail", {
+        await axios.post("https://blood-bank-2023.onrender.com/api/sendMail", {
           email: userEmail,
           emailMessage: tnxMessage,
         });
@@ -105,7 +104,7 @@ const FormBlood = () => {
             new Date().toDateString()
         );
 
-        e.preventDefault();
+        // e.preventDefault();
       } catch (error) {
         console.log(error);
 

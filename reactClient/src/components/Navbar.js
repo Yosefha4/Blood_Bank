@@ -39,7 +39,7 @@ const Navbar = () => {
       const currentUserID = window.localStorage.getItem("userID");
 
       try {
-        const temp = await axios.get(`http://localhost:5500/api/getUser/${currentUserID}`);
+        const temp = await axios.get(`https://blood-bank-2023.onrender.com/api/getUser/${currentUserID}`);
         // console.log("temp" , temp.data.currUser.fullName)
         setCurrentName(temp.data.currUser.fullName);
         

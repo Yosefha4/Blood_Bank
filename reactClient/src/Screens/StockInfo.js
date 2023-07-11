@@ -11,7 +11,7 @@ const StockInfo = () => {
   useEffect(() => {
     const getAllDonation = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/api/donation");
+        const res = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
         // console.log(res)
         setBloodInStock(res.data);
       } catch (error) {
@@ -45,8 +45,8 @@ const StockInfo = () => {
           In Stock
         </Title>
 
-        <Row gutter={12} className="cards">
-          <Col span={4}>
+        <Row gutter={[12, 12]} className='cards'>
+        <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -62,7 +62,7 @@ const StockInfo = () => {
               <p style={{ textShadow: "2px 2px 1px black" }}>{Aplus}</p>
             </Card>
           </Col>
-          <Col span={4}>
+          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -78,7 +78,7 @@ const StockInfo = () => {
               <p style={{ textShadow: "2px 2px 1px black" }}>{Oplus}</p>
             </Card>
           </Col>
-          <Col span={4}>
+          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -95,8 +95,8 @@ const StockInfo = () => {
             </Card>
           </Col>
         </Row>
-        <Row gutter={12} className="cards">
-          <Col span={4}>
+        <Row gutter={[12, 12]} className='cards'>
+        <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -112,7 +112,7 @@ const StockInfo = () => {
               <p style={{ textShadow: "2px 2px 1px black" }}>{ABplus}</p>
             </Card>
           </Col>
-          <Col span={4}>
+          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -128,7 +128,7 @@ const StockInfo = () => {
               <p style={{ textShadow: "2px 2px 1px black" }}>{Aminus}</p>
             </Card>
           </Col>
-          <Col span={4}>
+          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -145,8 +145,8 @@ const StockInfo = () => {
             </Card>
           </Col>
         </Row>
-        <Row gutter={12} className="cards">
-          <Col span={4}>
+        <Row gutter={[12, 12]} className='cards'>
+        <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"
@@ -162,7 +162,7 @@ const StockInfo = () => {
               <p style={{ textShadow: "2px 2px 1px black" }}>{Bminus}</p>
             </Card>
           </Col>
-          <Col span={4}>
+          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <Card
               hoverable
               className="stockCard"

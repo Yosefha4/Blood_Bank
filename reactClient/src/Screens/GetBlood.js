@@ -7,9 +7,7 @@ import {
   Form,
   Select,
   Button,
-  Alert,
-  Layout,
-  Card,
+
 } from "antd";
 
 
@@ -20,16 +18,16 @@ const GetBlood = () => {
   const [listDonation, setListDonation] = useState([]);
 
   const [amount, setAmount] = useState("");
-  const [dId, setDiD] = useState("");
+  // const [dId, setDiD] = useState("");
   const [bloodType, setBloodType] = useState("");
 
   const [isEmergency, setIsEmergency] = useState(false);
-  const [isCheckingExpiration, setIsCheckingExpiration] = useState(false);
+  // const [isCheckingExpiration, setIsCheckingExpiration] = useState(false);
 
   useEffect(() => {
     const getAllDonation = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/api/donation");
+        const res = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
         // console.log(res)
         setListDonation(res.data);
         console.log("first" , listDonation)
@@ -56,12 +54,12 @@ const GetBlood = () => {
             // await axios.put(`http://localhost:5500/api/donation/${donate._id}`)
             // console.log("Expired flag update successfully !")
   
-            await axios.delete(`http://localhost:5500/api/donation/id/${donate._id}`)
+            await axios.delete(`https://blood-bank-2023.onrender.com/api/donation/id/${donate._id}`)
             console.log("Expired item deleted successfully !")
   
             const expiredInfo =  "Action : Updating `isExpired` flag & Delete BloodUnit. Expired blood dose, it is no longer in stock. | " +  "Name: " + donate.name + " | " + " Address: " + donate.address + " | " +  "BirthDay: " +donate.birthDay  + " | " + "Donor Id: " + donate._id + " | " + "Blood Type: " + donate.bloodType + "IsExpired ?  " + donate.isExpired +" | " + "Date: " + new Date().toDateString();
             console.log("update expired flag of blood unit add to information ",expiredInfo)
-            axios.post("http://localhost:5500/api/logInfo", {
+            axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
               info: expiredInfo,
               bdDate: new Date().toDateString(),
             });
@@ -127,12 +125,12 @@ const GetBlood = () => {
       console.log("Yes we have >= units of your blood type !");
       for (let j = 0; j < amount; j++) {
         const deletedUnit = await axios.delete(
-          `http://localhost:5500/api/donation/${bloodType}`
+          `https://blood-bank-2023.onrender.com/api/donation/${bloodType}`
         );
         console.log("The BloodDonate that deleted is : ", deletedUnit);
         // console.log("The Data of ...  that deleted is : ", deletedUnit.data);
 
-        await axios.post("http://localhost:5500/api/logInfo", {
+        await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
           info: deletedUnit.data,
         });
 
@@ -155,11 +153,11 @@ const GetBlood = () => {
 
       for (let x = 0; x < matchUnitCount; x++) {
         const deletedUnit = await axios.delete(
-          `http://localhost:5500/api/donation/${bloodType}`
+          `https://blood-bank-2023.onrender.com/api/donation/${bloodType}`
         );
         console.log("The BloodDonate that deleted is : ", deletedUnit);
 
-        await axios.post("http://localhost:5500/api/logInfo", {
+        await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
           info: deletedUnit.data,
         });
 
@@ -182,11 +180,11 @@ const GetBlood = () => {
         if (alternativeCount > 0) {
           for (let j = 0; j < alternativeCount; j++) {
             const deletedUnit = await axios.delete(
-              `http://localhost:5500/api/donation/${alterMatchArray[0][y]}`
+              `https://blood-bank-2023.onrender.com/api/donation/${alterMatchArray[0][y]}`
             );
             console.log("The BloodDonate that deleted is : ", deletedUnit);
 
-            await axios.post("http://localhost:5500/api/logInfo", {
+            await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
               info: deletedUnit.data
             });
 
@@ -225,50 +223,9 @@ const GetBlood = () => {
     }
   };
 
-  // console.log("first", listDonation);
 
-  // const checkAndUpdateExpiration = async () => {
-  //   const thirtyFiveDaysAgo = new Date();
-  //   thirtyFiveDaysAgo.setDate(thirtyFiveDaysAgo.getDate() - 35);
 
-  //   listDonation.map(async (donate) => {
-  //     if (
-  //       !donate.isExpired &&
-  //       new Date(donate.donationDate) <= thirtyFiveDaysAgo
-  //     ) {
-  //       console.log("We found an expired blood unit!");
-  //       console.log(donate._id)
-  //       try {
-  //         // await axios.put(`http://localhost:5500/api/donation/${donate._id}`)
-  //         // console.log("Expired flag update successfully !")
 
-  //         await axios.delete(`http://localhost:5500/api/donation/id/${donate._id}`)
-  //         console.log("Expired item deleted successfully !")
-
-  //         const expiredInfo =  "Action : Updating `isExpired` flag & Delete BloodUnit. Expired blood dose, it is no longer in stock. | " +  "Name: " + donate.name + " | " + " Address: " + donate.address + " | " +  "BirthDay: " +donate.birthDay  + " | " + "Donor Id: " + donate.id + " | " + "Blood Type: " + donate.bloodType + "IsExpired ?  " + donate.isExpired +" | " + "Date: " + new Date().toDateString();
-  //         console.log("update expired flag of blood unit add to information ",expiredInfo)
-  //         axios.post("http://localhost:5500/api/logInfo", {
-  //           info: expiredInfo,
-  //         });
-
-  //       } catch (error) {
-  //         console.error(error)
-  //       }
-   
-  //     }
-  //   });
-  // };
-  // checkAndUpdateExpiration();
-
-  const ABplus = listDonation.filter((item) => item.bloodType === "AB+").length;
-  const ABminus = listDonation.filter(
-    (item) => item.bloodType === "AB-"
-  ).length;
-  const Aplus = listDonation.filter((item) => item.bloodType === "A+").length;
-  const Bplus = listDonation.filter((item) => item.bloodType === "B+").length;
-  const Aminus = listDonation.filter((item) => item.bloodType === "A-").length;
-  const Bminus = listDonation.filter((item) => item.bloodType === "B-").length;
-  const Oplus = listDonation.filter((item) => item.bloodType === "O+").length;
   const Ominus = listDonation.filter((item) => item.bloodType === "O-").length;
 
   const getResOfButton = () => {
@@ -289,10 +246,10 @@ const GetBlood = () => {
       try {
         for (let j = 0; j < amount; j++) {
           const deletedUnit = await axios.delete(
-            `http://localhost:5500/api/donation/O-`
+            `https://blood-bank-2023.onrender.com/api/donation/O-`
           );
 
-          await axios.post("http://localhost:5500/api/logInfo", {
+          await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
             info: deletedUnit.data,
           });
 
@@ -307,10 +264,10 @@ const GetBlood = () => {
       try {
         for (let j = 0; j < Ominus; j++) {
           const deletedUnit = await axios.delete(
-            `http://localhost:5500/api/donation/O-`
+            `https://blood-bank-2023.onrender.com/api/donation/O-`
           );
 
-          await axios.post("http://localhost:5500/api/logInfo", {
+          await axios.post("https://blood-bank-2023.onrender.com/api/logInfo", {
             info: deletedUnit.data,
           });
 

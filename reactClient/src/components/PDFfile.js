@@ -19,7 +19,7 @@ const PDFfile = () => {
   useEffect(() => {
     const getLogInfo = async () => {
       try {
-        const res = await axios.get("http://localhost:5500/api/logInfo");
+        const res = await axios.get("https://blood-bank-2023.onrender.com/api/logInfo");
 
         setLogInfoHistory(res.data);
       } catch (error) {

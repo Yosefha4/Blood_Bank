@@ -57,7 +57,7 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5500/api/login", {
+      const response = await axios.post("https://blood-bank-2023.onrender.com/api/login", {
         email: userEmail,
         password: userPassword,
       });
@@ -181,7 +181,7 @@ const Register = ({setChangeAuth}) => {
   const signUpHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5500/api/register", {
+      const res = await axios.post("https://blood-bank-2023.onrender.com/api/register", {
         fullName: fullName,
         email: userEmail,
         password: userPassword,
