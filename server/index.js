@@ -20,6 +20,8 @@ const DonationRoute = require("./routes/bloodDonationRouter");
 const LogInfoRoute = require("./routes/logInfoRouter");
 const userRouter = require("./routes/userRouter");
 const emailRouter = require("./routes/emailRoute")
+const diaryRouter = require("./routes/diaryRoute")
+const calendarRoute = require("./routes/calendarRoute")
 // const bodyParser = require("body-parser");
 
 //Connect to mongodb
@@ -32,7 +34,9 @@ mongoose
 app.use("/", DonationRoute);
 app.use("/", LogInfoRoute);
 app.use("/", userRouter);
-app.use("/",emailRouter)
+app.use("/",emailRouter);
+app.use("/",diaryRouter);
+app.use("/",calendarRoute);
 
 app.listen(PORT, () => {
   console.log("Server connected");

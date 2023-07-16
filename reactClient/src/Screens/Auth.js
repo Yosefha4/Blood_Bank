@@ -4,10 +4,11 @@ import React, { useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import Animation from "../DonorScreens/Animation";
+
 
 const Auth = () => {
   const [changeAuth, setChangeAuth] = useState(true);
-
 
   const switchButton = changeAuth ? (
     <Button
@@ -34,9 +35,16 @@ const Auth = () => {
   );
 
   return (
+    <div >
     <div className="formContainer">
+          {/* <Animation /> */}
+
       {switchButton}
       {changeAuth ? <Register setChangeAuth={setChangeAuth} /> : <Login />}
+      
+
+    </div>
+    {/* <Animation /> */}
     </div>
   );
 };
@@ -49,21 +57,37 @@ const Login = () => {
 
   const { setUserType } = useContext(UserContext);
 
-
   const [_, setCookies] = useCookies(["access_token"]);
+
+  const [isHovered, setIsHovered] = useState(false);
+
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   const navigate = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://blood-bank-2023.onrender.com/api/login", {
-        email: userEmail,
-        password: userPassword,
-      });
+      const response = await axios.post(
+        "https://blood-bank-2023.onrender.com/api/login",
+        {
+          email: userEmail,
+          password: userPassword,
+        }
+      );
       // console.log("response: ", response)
-      setUserType(response.data.uType)
-      if (response.data.message === "User Doesn't Exist" || response.data.message ===  "User Email or Password incorrect ") {
+      setUserType(response.data.uType);
+      if (
+        response.data.message === "User Doesn't Exist" ||
+        response.data.message === "User Email or Password incorrect "
+      ) {
         alert("User Email / Password incorrect .");
         return;
       } else {
@@ -107,11 +131,13 @@ const Login = () => {
               Email
             </p>
           }
+         
           name="userEmail"
           rules={[
             {
               required: true,
               message: "Please input your email!",
+              
             },
           ]}
         >
@@ -119,6 +145,7 @@ const Login = () => {
             onChange={(e) => setUserEmail(e.target.value)}
             value={userEmail}
             type="email"
+            style={{border:'1px solid black'}}
           />
         </Form.Item>
         <Row className="formGroup">
@@ -141,6 +168,7 @@ const Login = () => {
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
               type="password"
+              style={{border:'1px solid black'}}
             />
           </Form.Item>
         </Row>
@@ -158,11 +186,14 @@ const Login = () => {
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
-              backgroundColor: "whitesmoke",
+              backgroundColor: isHovered ? 'lightpink': "whitesmoke",
               fontWeight: "bold",
               width: 250,
               marginLeft: 8,
+              border:'1px solid black'
             }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             onClick={loginHandler}
           >
             Login
@@ -172,28 +203,47 @@ const Login = () => {
     </Col>
   );
 };
-const Register = ({setChangeAuth}) => {
+const Register = ({ setChangeAuth }) => {
   const [fullName, setFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userType, setUserType] = useState("");
+  const [userID, setUserID] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+
+  
+  const [isHovered, setIsHovered] = useState(false);
+
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   const signUpHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://blood-bank-2023.onrender.com/api/register", {
-        fullName: fullName,
-        email: userEmail,
-        password: userPassword,
-        userType: userType,
-      });
+      const res = await axios.post(
+        "http://127.0.0.1:5500/api/register",
+        {
+          fullName: fullName,
+          email: userEmail,
+          password: userPassword,
+          userType: userType,
+          userID: userID,
+          userPhone: userPhone,
+        }
+      );
       console.log(res.data.message);
       if (res.data.message === "User Already Exist!") {
         alert("User Already Exist!");
         return;
       } else {
         alert("Registration Completed! Now login.");
-        setChangeAuth(false)
+        setChangeAuth(false);
         // setChangeAuth(false)
       }
     } catch (error) {
@@ -239,6 +289,7 @@ const Register = ({setChangeAuth}) => {
             <Input
               onChange={(e) => setFullName(e.target.value)}
               value={fullName}
+              style={{border:'1px solid black'}}
             />
           </Form.Item>
         </Row>
@@ -261,6 +312,7 @@ const Register = ({setChangeAuth}) => {
           <Input
             onChange={(e) => setUserEmail(e.target.value)}
             value={userEmail}
+            style={{border:'1px solid black'}}
           />
         </Form.Item>
         <Row className="formGroup">
@@ -283,6 +335,55 @@ const Register = ({setChangeAuth}) => {
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
               type="password"
+              style={{border:'1px solid black'}}
+            />
+          </Form.Item>
+        </Row>
+        <Row className="formGroup">
+          <Form.Item
+            className="formItem"
+            label={
+              <p style={{ fontSize: "18px", width: 100, fontWeight: "bold" }}>
+                ID
+              </p>
+            }
+            name="userID"
+            rules={[
+              {
+                required: true,
+                message: "Please input valid ID!",
+              },
+            ]}
+          >
+            <Input
+              onChange={(e) => setUserID(e.target.value)}
+              value={userID}
+              type="id"
+              style={{border:'1px solid black'}}
+            />
+          </Form.Item>
+        </Row>
+        <Row className="formGroup">
+          <Form.Item
+            className="formItem"
+            label={
+              <p style={{ fontSize: "18px", width: 100, fontWeight: "bold" }}>
+                Phone
+              </p>
+            }
+            name="userPhone"
+            rules={[
+              {
+                required: true,
+                message: "Please input valid Phone!",
+              },
+            ]}
+          >
+            <Input
+              onChange={(e) => setUserPhone(e.target.value)}
+              value={userPhone}
+              type="phone"
+              style={{border:'1px solid black'}}
             />
           </Form.Item>
         </Row>
@@ -301,17 +402,22 @@ const Register = ({setChangeAuth}) => {
               },
             ]}
           >
-            <Radio.Group
-              onChange={(e) => setUserType(e.target.value)}
-              style={{ marginRight: 36 }}
-            >
-              <Radio style={{ fontSize: 16 }} value={"Student"}>
-                Student
-              </Radio>
-              <Radio style={{ fontSize: 16 }} value={"Employee"}>
-                Employee
-              </Radio>
-            </Radio.Group>
+            <div className="radioGroup">
+              <Radio.Group
+                onChange={(e) => setUserType(e.target.value)}
+                style={{ display: "flex" }}
+              >
+                <Radio style={{ fontSize: 16 }} value={"Student"}>
+                  Student
+                </Radio>
+                <Radio style={{ fontSize: 16 }} value={"Employee"}>
+                  Employee
+                </Radio>
+                <Radio style={{ fontSize: 16 }} value={"Donor"}>
+                  Donor
+                </Radio>
+              </Radio.Group>
+            </div>
             {/* <Input
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
@@ -348,11 +454,14 @@ const Register = ({setChangeAuth}) => {
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
-              backgroundColor: "whitesmoke",
+              backgroundColor: isHovered ? 'lightpink': "whitesmoke",
               fontWeight: "bold",
               width: 250,
+              border: '1px solid black'
               // marginLeft:8
             }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             onClick={signUpHandler}
           >
             Sign Up

@@ -21,6 +21,8 @@ const FormBlood = () => {
   const [bloodType, setBloodType] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
+  
+
   const tnxMessage = `
   <h3 style="color: #ff0000;">Thank you ${dName} !</h3>
 

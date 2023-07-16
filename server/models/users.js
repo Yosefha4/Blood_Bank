@@ -18,6 +18,14 @@ const Users = new mongoose.Schema({
         type: String,
         require: true,
       },
+      userID: {
+        type: String,
+        require: true,
+      },
+      userPhone: {
+        type: String,
+        require: true,
+      },
  
 });
 

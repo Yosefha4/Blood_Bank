@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const CryptoJS = require("crypto-js");
 
 
@@ -119,7 +119,7 @@ router.post("/api/donation",async(req,res) =>{
 
 //create second route --> the "get" data from database
 router.get("/api/donation", async (req, res) => {
-  try {
+  try { 
     const donation = await bloodDonation.find({});
     res.status(200).json(donation);
   } catch (error) {

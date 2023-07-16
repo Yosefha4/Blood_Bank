@@ -55,7 +55,6 @@ header {
   color: var(--textColor);
 }
 
-
 nav a {
   margin: 0 1rem;
   color: var(--textColor);
@@ -106,6 +105,26 @@ header .navBtn {
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+}
+
+.radioGroup {
+  display: "grid";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "flex-start";
+}
+
+.authContainer {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+  background-color: #f8d4db;
+  border-radius: 10%;
+  border: 1px solid black;
+  padding: 24px;
+  box-shadow: 5px 10px 10px rgba(242, 252, 255, 0.807);
 }
 
 @media only screen and (max-width: 1024px) {
@@ -166,6 +185,17 @@ header .navBtn {
     width: 100%;
     margin: 0 0 20px;
   }
+  .authContainer {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+    background-color: #f8d4db;
+    border-radius: 10%;
+    border: 1px solid black;
+    padding: 36px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -181,11 +211,62 @@ header .navBtn {
   .bloodForm .ant-col {
     width: 100%;
   }
-}
+  .authContainer {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+    background-color: white;
+  }
 
-/* .heading{
-  background-color: var(white);
-} */
+  .calendar-container {
+    width: 90%;
+    max-width: 300px;
+    background-color: black;
+  }
+
+  .cal-btn {
+    width: 120px;
+    font-size: 16px;
+    background-color: blue;
+
+  }
+  .custom-calendar {
+    background-color: #f0f0f0; /* Replace with your desired background color */
+    width: 100%; /* Adjust the width as needed */
+    padding: 24px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Add any additional styles you want */
+  }
+  .container {
+    flex-direction: column;
+  }
+  .graphs{
+    padding: 12px;
+    width:170px;
+    height: 120vh;
+  }
+
+  .graph-item {
+    order: 2;
+  }
+  
+  .history-docs {
+    order: 1;
+   flex:1
+  }
+  .doc-item{
+    max-width: max-content;
+  }
+
+
+
+}
 
 .mainImage {
   width: 150px;
@@ -257,7 +338,41 @@ header .navBtn {
     overflow: hidden;
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
   }
+  .authContainer {
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+    background-color: rgb(251, 210, 216);
+    border-radius: 5;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .calendar-container {
+    width: 90%;
+    max-width: 300px;
+    background-color: black;
+  }
+
+  .cal-btn {
+    width: 120px;
+    font-size: 16px;
+    background-color: blue;
+
+  }
+  .card-docs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
 }
+
+
 .stockCard {
   align-items: center;
   justify-content: center;
@@ -315,13 +430,6 @@ header .navBtn {
   justify-content: center;
   align-items: center;
 }
-.authContainer {
-  display: grid;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin-top: 36px;
-}
 
 .bloodForm {
   display: flex;
@@ -334,6 +442,7 @@ header .navBtn {
 
 .formItem {
   display: flex;
+  color: white;
 }
 
 .footer {
@@ -366,55 +475,265 @@ header .navBtn {
   ); */
 }
 
-/* 
-.navbar{
-
+/*Profile Page*/
+.profile-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  /* height: 50vh; */
+  padding-top: 50px;
 
-  height: 70px;
-  color: black;
-  background-color: #ffa39e;
-  text-decoration: none;
-
+  background-color: transparent;
+}
+.profile-page {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: transparent;
 }
 
-.logo{
-  color: red;
+.profile-frame {
+  background-color: #fff;
+  border-radius: 30%;
+  padding: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: grid;
+  /* margin: 40px; */
+  gap: 12px;
+  font-size: 18px;
+}
+.profile-frame:hover {
+  opacity: 0.7;
+  border-radius: 10px;
+  padding: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.profileBtn {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  gap: 20px;
+}
+.btn {
+  padding: 5px;
+  cursor: pointer;
+  background: white;
+
+  color: var(black);
+  border: 1px black solid;
+
+  font-size: 1.8rem;
+  flex: 1;
+}
+
+.profile-det-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* History Page Styles*/
+.history-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+/* .container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-top: 16px;
+  text-align: center;
+  color: whitesmoke;
+  margin-inline: 20px;
+  gap: 20px;
+} */
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 16px;
+  text-align: center;
+  color: whitesmoke;
+  margin-inline: 20px;
+  gap: 20px;
+}
+.graphs {
+  border: 1px solid black;
+  height: 100vh;
+  width: 80%;
+  flex: 1;
+  flex-direction: column;
+  box-shadow: 5px 10px 10px white;
+  border-radius: 75px;
+
+}
+.graph-item {
+margin-top: 24px;
+}
+.history-docs {
+  border: 1px solid black;
+  flex: 1;
+  flex-direction: column;
+  box-shadow: 5px 10px 10px white;
+  border-radius: 75px;
+  width: 80%;
+  padding-inline: 36px;
+  margin-bottom: 24px;
+}
+
+.docs-fields {
+  margin: 16px;
+}
+.doc-item {
+  border: 1px solid black;
+  border-radius: 1%;
+  margin-top: 12px;
+  background-color: transparent;
+  color: white;
+  font-size: 22px;
+  padding-inline: 12px;
+}
+.doc-item:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.calendar {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-h2{
-  color: red;
-}
-
-.items{
+.calendar-container {
   display: flex;
-  justify-content: space-around;
-  text-decoration: none;
-  color: black;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: transparent;
+  font-family: Arial, sans-serif;
+  margin-top: 24px;
+  gap: 16px;
+  flex: 1;
+  margin-bottom: 24px;
+}
+.cal-btn {
+  border: 2px solid black;
+  background-color: white;
+  height: 50px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.cal-btn:hover {
+  background-color: transparent;
+  color: white;
 }
 
-.item{
-  flex: 1;
-  border-radius: 6;
-  border-width: 1;
-  background-color: aqua;
+.choose-hours{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  margin-top: 36px;
+  background-color: white;
+  
+
+}
+.hour-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.hour-item{
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hour-item:hover{
+  border: 2px solid black;
+  width: 100px;
+  height: 50px;
+  background-color: lightcyan;
   font-weight: bold;
 }
 
-a:link {
-  text-decoration: none;
-}
 
-a:visited {
-  text-decoration: none;
-}
+.hour-item-btn{
+background-color: transparent;
+border: none
 
-a:hover {
-  text-decoration: none;
-}
+;}
 
-a:active {
-  text-decoration: none;
+/* .mainContainerCal{
+  display: grid;
+  grid-template-columns: 20% 50% 30% ;
+
 } */
+.exist-days{
+display: inline;
+  background-color: transparent;
+  font-family: Arial, sans-serif;
+  margin-top: 24px;
+  gap: 16px;
+  align-items: center;
+  max-width: max-content;
+  /* border: 4px solid black; */
+  text-align: center;
+  max-width: max-content;
+  padding-top: 24px;
+
+}
+.forcast{
+  
+
+  font-family: Arial, sans-serif;
+
+  border: 4px solid black;
+
+}
+
+.trash-card{
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+}
+.trash-icon{
+  color: black;
+  border: none;
+  border-radius: 25%;
+
+  
+}
+.trash-icon:hover{
+  color: red;
+  background-color: white;
+  
+}
+
+.card-docs {
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 57, 57);
+  margin: 10px;
+  color: var(--textColor);
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2.5px 1px rgba(0, 0, 0, 0.3);
+  height: 100px;
+  border-radius: 6px;
+  border: 1px solid black;
+  box-shadow: 5px 10px 10px rgba(242, 252, 255, 0.807);
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage as needed */
+}
