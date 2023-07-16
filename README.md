@@ -1,8 +1,8 @@
 # Blood Bank Application
 The Blood Bank web application is designed to facilitate blood donation and supply management. It allows users to donate blood units, request blood units in emergencies or routine situations, and export all data to a PDF file for record-keeping purposes.
 
-[![Blood Bank Application Preview](https://img.youtube.com/vi/f-PpMsrrtIk/maxresdefault.jpg)](https://www.youtube.com/watch?v=77EhgAhJ_dE)
-[Blood Bank Application Preview](https://www.youtube.com/watch?v=77EhgAhJ_dE)
+[![Blood Bank Application Preview](https://img.youtube.com/vi/f-PpMsrrtIk/maxresdefault.jpg)](https://www.youtube.com/watch?v=8GXDdk_PLfs)
+[Blood Bank Application Preview](https://www.youtube.com/watch?v=8GXDdk_PLfs)
 
 
 
