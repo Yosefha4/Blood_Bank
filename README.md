@@ -1,40 +1,56 @@
 # Blood Bank Application
-The Blood Bank web application is designed to facilitate blood donation and supply management. It allows users to donate blood units, request blood units in emergencies or routine situations, and export all data to a PDF file for record-keeping purposes.
+The Blood Bank web application is a comprehensive platform that streamlines blood donation and supply management. It provides an intuitive user interface for donors to easily register, schedule appointments, and access their donation history. Additionally, administrators benefit from a robust management interface to oversee inventory, track donations, handle requests, and generate reports. The application ensures efficient blood supply distribution, fostering a seamless process for both donors and healthcare facilities.
+
 
 [![Blood Bank Application Preview](https://img.youtube.com/vi/f-PpMsrrtIk/maxresdefault.jpg)](https://www.youtube.com/watch?v=8GXDdk_PLfs)
 [Blood Bank Application Preview](https://www.youtube.com/watch?v=8GXDdk_PLfs)
 
 
 
-# Features
 
-### Blood Donation
+# Blood Bank Management Interface
 
-  * Users can donate blood units by providing their relevant information.
 
- ### Blood Requests
-
-  * Users who need blood can submit requests, specifying blood type, quantity and urgency.
-  * Users can request blood in an emergency.
-
- ### Blood Supply Management
+   ### Blood Donation
  
-  * The application maintains an inventory of available blood units, categorized by blood type.
-  * Donated blood units are recorded and added to the inventory.
+   * Users can donate blood units by providing their relevant information.
+ 
+  ### Blood Requests
+ 
+   * Users who need blood can submit requests, specifying blood type, quantity and urgency.
+   * Users can request blood in an emergency.
+ 
+  ### Blood Supply Management
+  
+   * The application maintains an inventory of available blood units, categorized by blood type.
+   * Donated blood units are recorded and added to the inventory.
+ 
+  ### Data Export to PDF
+ 
+   * Users can generate PDF reports containing detailed information about blood donations, requests, and inventory.
+   * The exported reports can be used for analysis, documentation, or sharing with stakeholders.
 
- ### Data Export to PDF
+# Donor User Interface
 
-  * Users can generate PDF reports containing detailed information about blood donations, requests, and inventory.
-  * The exported reports can be used for analysis, documentation, or sharing with stakeholders.
+ * A new interface designed specifically for blood donors.
+ * Provides a personalized experience and features tailored to donors' needs.
+ * Donors have individual profile pages to manage their personal information, including contact details and medical history.
+ * Access to a complete blood donation history, allowing donors to track and review their past donations.
+ * Donation Diary feature enables donors to schedule and set dates for upcoming blood donations using an intuitive calendar interface.
+ * Automatic email notifications sent immediately after donation to express gratitude and acknowledge the donor's contribution.
+ * Reminder emails sent approximately one week before the next eligible donation date, encouraging continued support.
 
-# Technologies Used
- The Blood Bank web application is built using the following technologies:
 
-  * React.js: A JavaScript library for building user interfaces.
-  * Node.js: A JavaScript runtime environment for server-side development.
-  * Express.js: A web application framework for Node.js.
-  * MongoDB: A NoSQL database for storing application data.
-  * PDF libraries (@react-pdf/renderer): Used for generating PDF reports.
+
+ 
+ # Technologies Used
+  The Blood Bank web application is built using the following technologies:
+ 
+   * React.js: A JavaScript library for building user interfaces.
+   * Node.js: A JavaScript runtime environment for server-side development.
+   * Express.js: A web application framework for Node.js.
+   * MongoDB: A NoSQL database for storing application data.
+   * PDF libraries (@react-pdf/renderer): Used for generating PDF reports.
 
 ---
 
