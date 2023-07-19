@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Navbar from "../../components/Navbar";
-import { MemoryRouterProvider } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 // Mock window.matchMedia
 global.matchMedia =
@@ -22,23 +23,28 @@ describe("Navbar", () => {
   test("renders the BloodBank Logo correctly", () => {
     // Mock the navigate function
     const mockNavigate = jest.fn();
+    const mockUserContextValue = { userType: "mockUserType" };
+
     require("react-router-dom").useNavigate.mockImplementation(
       () => mockNavigate
     );
-    render(<Navbar />);
+    render( 
+      <UserContext.Provider value={mockUserContextValue}>
+        <Navbar />
+      </UserContext.Provider>
+  );
 
     // Check if the logo is rendered
     const logoElement = screen.getByText("Blood Bank");
-    // console.log(logoElement.children)
     expect(logoElement).toBeDefined();
   });
   test("Check if the navigation links are rendered", () => {
-    // Mock the navigate function
-    const mockNavigate = jest.fn();
-    require("react-router-dom").useNavigate.mockImplementation(
-      () => mockNavigate
-    );
-    render(<Navbar />);
+
+    const mockUserContextValue = { userType: "mockUserType" };
+
+    render(     <UserContext.Provider value={mockUserContextValue}>
+      <Navbar />
+    </UserContext.Provider>);
 
     // Check if the navigation links are rendered
     const homeLink = screen.getByText("Home");

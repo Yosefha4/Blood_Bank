@@ -12,6 +12,7 @@ const Diary = () => {
   const [isShow, setIsShow] = useState(false);
   const [chooseHour, setChooseHour] = useState("");
   const [dayList, setDayList] = useState([]);
+  const [filterList, setFilterList] = useState([]);
 
   const uID = localStorage.getItem("userID");
   console.log("UID: ", uID);
@@ -28,7 +29,14 @@ const Diary = () => {
       try {
         const currentDays = await axios.get("http://127.0.0.1:5500/api/calendar");
         setDayList(currentDays.data);
-        console.log(currentDays.data);
+        // console.log(currentDays.data);
+        const newTemp = currentDays.data;
+        newTemp.forEach((item) => {
+          if(item.userUid === uID && !filterList.some((filteredItem) => filteredItem.id === item.id)){
+            setFilterList(prev => [...prev, item])
+          }
+        })
+        // console.log("The filter list is : " , filterList)
       } catch (error) {
         console.log(error);
       }
@@ -116,6 +124,8 @@ const Diary = () => {
               onPanelChange={onPanelChange}
               onSelect={(e) => setChooseDate(e)}
               className="custom-calendar" // Add a class for custom styling
+              data-testid="calendar-component"
+
             />
           </div>
           <button className="cal-btn" onClick={() => setIsShow(!isShow)}>
@@ -190,11 +200,13 @@ const Diary = () => {
         </div>
       </div>
       <div className="exist-days">
-        <h3 style={{ textAlign: "center" }}>Book</h3>
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <h3 style={{ textAlign: "center", alignItems:'center', color: "lightgray" }}>Book</h3>
+        </div>
         <div>
           <Col>
-            {dayList.length > 0 &&
-              dayList.map((item) => (
+            {filterList.length > 0 ?
+              filterList.map((item) => (
                 <div className="trash-card" key={Math.random(502)}>
                   <Card
                     hoverable
@@ -210,7 +222,7 @@ const Diary = () => {
                     onClick={() => handleChooseIf(item)} // Add a function to handle deletion
                   />
                 </div>
-              ))}
+              )) : "Don't Have Any History Doc..."}
           </Col>
         </div>
       </div>

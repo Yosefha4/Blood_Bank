@@ -105,15 +105,15 @@ const History = (route) => {
       }
     };
 
-    if (stateParam.state.currentUserDet.length > 0) {
+    if (stateParam?.state?.currentUserDet.length > 0) {
       createChartData();
     }
-  }, [stateParam.state.currentUserDet]);
+  }, [stateParam?.state?.currentUserDet]);
 
   useEffect(() => {
     console.log("The location params is : ", stateParam);
     // console.log(stateParam.state.currentUserDet[0].info)
-    setHostoryList(stateParam.state.currentUserDet);
+    setHostoryList(stateParam?.state?.currentUserDet);
 
     const donorId = stateParam?.state?.currentUserDet
       ? stateParam?.state?.currentUserDet[0]?.info
@@ -136,7 +136,7 @@ const History = (route) => {
         <div className="history-docs">
           <h2 style={{ textShadow: "1px 1px 1px green" }}>Docs</h2>
           <div className="docs-fields">
-            {hostoryList.map((item) => (
+            {hostoryList?.map((item) => (
               <div className="doc-item" key={Math.random(512)}>
                 {item.info}
               </div>

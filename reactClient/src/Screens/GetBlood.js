@@ -30,7 +30,7 @@ const GetBlood = () => {
         const res = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
         // console.log(res)
         setListDonation(res.data);
-        console.log("first" , listDonation)
+        // console.log("first" , listDonation)
       } catch (error) {
         console.log(error);
       }

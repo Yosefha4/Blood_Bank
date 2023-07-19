@@ -692,6 +692,8 @@ display: inline;
   text-align: center;
   max-width: max-content;
   padding-top: 24px;
+  align-items: center;
+  justify-content: center;
 
 }
 .forcast{

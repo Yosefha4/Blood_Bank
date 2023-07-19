@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Animation from "./Animation";
+import { Link} from "react-router-dom";
+// import Animation from "./Animation";
 
 const Profile = () => {
   const [userName, setUserName] = useState("");
@@ -13,7 +13,11 @@ const Profile = () => {
   const [realUserid, setRealUserid] = useState("");
   const [bloodType, setBloodType] = useState("");
 
-  const navigation = useNavigate();
+
+  const [try1, setTry1] = useState(false);
+
+  // const navigation = useNavigate();
+
 
   const uID = localStorage.getItem("userID");
   console.log("UID : ", uID);
@@ -67,6 +71,7 @@ const Profile = () => {
               console.log("email match!");
               serCurrentUserDet((prevState) => [...prevState, item]);
             }
+            setTry1(true)
           }
         });
         // filteredList.forEach(item => {
@@ -74,9 +79,9 @@ const Profile = () => {
         //   console.log(bloodType);
         // });
 
-        console.log("first", listDonation);
+        // console.log("first", listDonation);
 
-        console.log("Check data success");
+        // console.log("Check data success");
 
         response.data.forEach((item) => {
           if (item.email === userEmail) {
@@ -216,7 +221,7 @@ const Profile = () => {
       </div>
       <div className="profileBtn">
         <Link to="/history" state={{ currentUserDet: currentUserDet }}>
-          <button className="btn">History</button>
+          <button className="btn" disabled={!try1}>History</button>
         </Link>
         <button className="btn">Feedback</button>
       </div>

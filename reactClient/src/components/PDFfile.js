@@ -29,7 +29,7 @@ const PDFfile = () => {
     getLogInfo();
   }, []);
 
-  console.log(logInfoHistory);
+  // console.log(logInfoHistory);
 
   return (
     <Document>

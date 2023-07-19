@@ -41,3 +41,5 @@ app.use("/",calendarRoute);
 app.listen(PORT, () => {
   console.log("Server connected");
 });
+
+module.exports = { app };
