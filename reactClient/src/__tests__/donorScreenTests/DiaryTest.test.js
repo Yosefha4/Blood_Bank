@@ -25,7 +25,7 @@ describe("Diary Page Test", () => {
     expect(threeTitle).toBeDefined();
   });
 
-  test("Should render the calendar correctly", () => {
+  test("Should render the calendar choose-day button correctly", () => {
     render(<Diary />);
 
     const chooseBtn = screen.getByText("Choose Day");

@@ -5,21 +5,16 @@ import Profile from '../../DonorScreens/Profile';
 
 describe("Donor Profile Test", () => {
   test("Should render the title correct", () => {
-    render(
-      <MemoryRouter>
+    render(  <MemoryRouter>
         <Profile />
-      </MemoryRouter>
-    );
+      </MemoryRouter>);
     const profileTitle = screen.getByText("User Profile");
     expect(profileTitle).toBeDefined();
   });
-
   test("Should render the info-labels correct", () => {
-    render(
-      <MemoryRouter>
+    render(   <MemoryRouter>
         <Profile />
-      </MemoryRouter>
-    );
+      </MemoryRouter>);
     const userNameTitle = screen.getByText("Username:");
     const userEmail = screen.getByText("Email:");
     const userBloodType = screen.getByText("Blood Type:");
@@ -29,33 +24,21 @@ describe("Donor Profile Test", () => {
   });
 
   test("Should render the buttons correct", () => {
-    render(
-      <MemoryRouter>
+    render( <MemoryRouter>
         <Profile />
-      </MemoryRouter>
-    );
+      </MemoryRouter> );
     const historyBtn = screen.getByText("History");
     const feedbackBtn = screen.getByText("Feedback");
     expect(historyBtn).toBeDefined();
     expect(feedbackBtn).toBeDefined();
   });
-
   test("Clicking on History button should navigate to History page",  () => {
-    // const history = createMemoryHistory();
- 
-
-    render(
-      <MemoryRouter>
+    render( <MemoryRouter>
         <Profile />
-      </MemoryRouter>
-    );
+      </MemoryRouter> );
     waitFor(() => {
-
     const historyBtn = screen.getByText("History");
-
     fireEvent.click(historyBtn);
-
-
       const newPageTitle = screen.getByText("Docs");
       expect(newPageTitle).toBeDefined();
     })
