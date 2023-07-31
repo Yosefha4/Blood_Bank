@@ -65,6 +65,8 @@ const Navbar = () => {
       <>
         <a href="/home">Home</a>
         <a href="/profile">Profile</a>
+        <a href="/moreInfo">More</a>
+
         {/* <a href="/history">History</a> */}
         <a href="/diary">Diary</a>
         {!cookies.access_token ? (
@@ -78,7 +80,7 @@ const Navbar = () => {
                 borderColor: "transparent",
                 fontSize: 22,
                 color: isHovered ? "black" : "lightblue",
-                marginLeft: 18,
+                // marginLeft: 18,
               }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -104,24 +106,42 @@ const Navbar = () => {
   };
   const DefaultNavigation = () => {
     return (
-      <>
+      <div >
         <a href="/home">Home</a>
         <a href="/donateblood">Donate</a>
         <a href="/getblood">Get</a>
-        <a href="/stock">More</a>
+        <a href="/stock">Stock</a>
+        <a href="/moreInfo">More</a>
         <a href="/logInfo">Export</a>
         {!cookies.access_token ? (
           <a href="/">Login/Register</a>
         ) : (
           <>
+      
+            <a
+              style={{
+                border: "none",
+                color: "whitesmoke",
+                textShadow: "1px 1px black",
+                fontWeight:'normal'
+                
+              }}
+            >
+              {currentName}-({window.localStorage.getItem("userType")}
+              )
+            </a>
             <button
               style={{
                 fontWeight: "bold",
-                backgroundColor: isHovered ? "aquamarine" : "transparent",
+                backgroundColor: isHovered ? "aquamarine" : "whitesmoke",
                 borderColor: "transparent",
+                border:'1px solid white',
+                padding:'6px',
+                borderRadius:'5px',
                 fontSize: 22,
-                color: isHovered ? "black" : "lightblue",
+                color: isHovered ? "black" : "black",
                 marginLeft: 18,
+                cursor:'pointer'
               }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -129,24 +149,13 @@ const Navbar = () => {
             >
               LogOut
             </button>
-            <a
-              style={{
-                border: "none",
-                color: "white",
-                textShadow: "2px 2px black",
-                fontWeight: "bold",
-              }}
-            >
-              Hello : {currentName} - ({window.localStorage.getItem("userType")}
-              )
-            </a>
           </>
         )}
 
         <button className="navBtn nav-close-btn" onClick={showNavBar}>
           <FaTimes />
         </button>
-      </>
+      </div>
     );
   };
 

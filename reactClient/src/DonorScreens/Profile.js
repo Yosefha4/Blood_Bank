@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
 // import Animation from "./Animation";
+import DocImage from "../assets/docImg.png"
 
 const Profile = () => {
   const [userName, setUserName] = useState("");
@@ -179,6 +180,7 @@ const Profile = () => {
   // checkData();
 
   return (
+    <div className="prfCont">
     <div className="profile-container">
       {/* <div className="profile-page"> */}
       <div className="profile-frame">
@@ -228,6 +230,15 @@ const Profile = () => {
 
       {/* <Animation /> */}
     </div>
+    <div className="profile-container">
+    <div style={{flex:1,width:'100%',height:'100%'}}>
+            <img src={DocImage} width={400} style={{filter:'drop-shadow(13px 15px 12px rgb(0 0 0 / 0.4))'}}/>
+    </div>
+
+      {/* <Animation /> */}
+    </div>
+
+  </div>
   );
 };
 

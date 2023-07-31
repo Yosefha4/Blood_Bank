@@ -144,7 +144,7 @@ const History = (route) => {
           </div>
         </div>
         <div className="graphs">
-          <h2 style={{ textShadow: "1px 1px 1px  blue" }}>Graphs</h2>
+          <h2 style={{ textShadow: "1px 10px 10px red" , color:'black' }}>Graphs</h2>
           <div className="graph-item">
             {/* <Doughnut data={hostoryList} /> */}
             <BarChart chartData={countData} />

@@ -409,6 +409,8 @@ const GetBlood = () => {
                 textAlign: "center",
                 backgroundColor: "whitesmoke",
                 fontWeight: "bold",
+                boxShadow: "0 0 18px black",
+
               }}
               onClick={orderUnitsOfBlood}
               // onClick={(e) => addDonateBlood(e)}

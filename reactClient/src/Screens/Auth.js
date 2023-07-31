@@ -16,6 +16,7 @@ const Auth = () => {
         backgroundColor: "transparent",
         borderColor: "transparent",
         fontWeight: "bold",
+        fontSize:"20px"
       }}
       onClick={() => setChangeAuth(!changeAuth)}
     >
@@ -27,6 +28,8 @@ const Auth = () => {
         backgroundColor: "transparent",
         borderColor: "transparent",
         fontWeight: "bold",
+        fontSize:"20px"
+
       }}
       onClick={() => setChangeAuth(!changeAuth)}
     >
@@ -122,7 +125,7 @@ const Login = () => {
         }}
         autoComplete="off"
       >
-        <h2 style={{ marginBottom: 24 }}>Log-In</h2>
+        <h2 style={{ marginBottom: 24,fontSize:'38px' }}>Log-In</h2>
 
         <Form.Item
           className="formItem"
@@ -269,7 +272,7 @@ const Register = ({ setChangeAuth }) => {
         }}
         autoComplete="off"
       >
-        <h2 style={{ marginBottom: 24 }}>Register</h2>
+        <h2 style={{ marginBottom: 24,fontSize:'38px'  }}>Register</h2>
         <Row>
           <Form.Item
             className="formItem"

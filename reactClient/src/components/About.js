@@ -157,7 +157,7 @@ const data2 = [
 const About = () => {
   return (
     <div className="aboutContainer">
-      <Typography.Title className="heading"  style={{marginBottom:24}} level={2} color='white'>Information</Typography.Title>
+    <p style={{fontSize:36, fontWeight:'bold',marginBlock:36,color:'white'}}>Info</p>
       <Table
         dataSource={dataSource}
         columns={columns}

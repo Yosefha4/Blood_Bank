@@ -22,6 +22,7 @@ const userRouter = require("./routes/userRouter");
 const emailRouter = require("./routes/emailRoute")
 const diaryRouter = require("./routes/diaryRoute")
 const calendarRoute = require("./routes/calendarRoute")
+const newsLetterRoute = require("./routes/newsUsers");
 // const bodyParser = require("body-parser");
 
 //Connect to mongodb
@@ -37,6 +38,7 @@ app.use("/", userRouter);
 app.use("/",emailRouter);
 app.use("/",diaryRouter);
 app.use("/",calendarRoute);
+app.use("/",newsLetterRoute);
 
 app.listen(PORT, () => {
   console.log("Server connected");

@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Col,
-  Input,
-  Form,
-  Select,
-  Button,
-  DatePicker,
-} from "antd";
+import { Typography, Col, Input, Form, Select, Button, DatePicker } from "antd";
 import axios from "axios";
 
 const { Title } = Typography;
@@ -20,8 +12,6 @@ const FormBlood = () => {
   const [dId, setDiD] = useState("");
   const [bloodType, setBloodType] = useState("");
   const [userEmail, setUserEmail] = useState("");
-
-  
 
   const tnxMessage = `
   <h3 style="color: #ff0000;">Thank you ${dName} !</h3>
@@ -41,29 +31,41 @@ const FormBlood = () => {
     } else {
       // e.preventDefault();
       try {
-        //add check exsit 
+        //add check exsit
         // Check if the email or donor ID already exists in the donation documents
-        const existingDonations = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
-        const existingEmails = existingDonations.data.filter((donation) => donation.email === userEmail);
-        const existingDonorIDs = existingDonations.data.filter((donation) => donation.donorId === dId);
+        const existingDonations = await axios.get(
+          "https://blood-bank-2023.onrender.com/api/donation"
+        );
+        const existingEmails = existingDonations.data.filter(
+          (donation) => donation.email === userEmail
+        );
+        const existingDonorIDs = existingDonations.data.filter(
+          (donation) => donation.donorId === dId
+        );
 
         if (existingEmails.length > 0 || existingDonorIDs.length > 0) {
-          console.log("User cannot donate blood again until at least 3 months have passed since the last donation");
-          alert('User cannot donate blood again until at least 3 months have passed since the last donation');
+          console.log(
+            "User cannot donate blood again until at least 3 months have passed since the last donation"
+          );
+          alert(
+            "User cannot donate blood again until at least 3 months have passed since the last donation"
+          );
           return;
         }
 
-        
         //finish cahnges
 
-        const res = await axios.post("https://blood-bank-2023.onrender.com/api/donation", {
-          name: dName,
-          address: dAddress,
-          birthDay: dBirthDay,
-          donorId: dId,
-          bloodType: bloodType,
-          email: userEmail,
-        });
+        const res = await axios.post(
+          "https://blood-bank-2023.onrender.com/api/donation",
+          {
+            name: dName,
+            address: dAddress,
+            birthDay: dBirthDay,
+            donorId: dId,
+            bloodType: bloodType,
+            email: userEmail,
+          }
+        );
 
         const testInformation =
           "Action : Donate | " +
@@ -119,7 +121,7 @@ const FormBlood = () => {
 
   return (
     <div className="formContainer">
-      <Title level={2} className="heading">
+      <Title level={2} className="heading" color="white">
         Donation Details
       </Title>
 
@@ -275,6 +277,7 @@ const FormBlood = () => {
               textAlign: "center",
               backgroundColor: "whitesmoke",
               fontWeight: "bold",
+              boxShadow: "0 0 18px black",
             }}
             onClick={(e) => addDonateBlood(e)}
           >

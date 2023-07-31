@@ -16,26 +16,29 @@
   /* background-color: var(--mainColorLight); */
 }
 .app {
-  background-color: "white";
+  background-color: "#a91101";
 
   /* background: linear-gradient(
     0deg,
     rgba(195, 34, 34, 1) 100%,
     rgba(0, 0, 0, 1) 100%
   ); */
-  height: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
   /* background-color: #e75050; */
-  background-image: linear-gradient(
+
+  /* background-image: linear-gradient(
     to bottom,
-    #d93434,
-    #e96063,
-    #f3888f,
-    #f8aeb8,
-    #f8d4db
-  );
+    #a91101,
+    #a91101,
+    #a91101,
+    #a91101,
+    #a91101
+  ); */
+  background-image: url("./assets/bgBlood.jpg");
+  background-size: cover;
 }
 
 header {
@@ -44,21 +47,25 @@ header {
   justify-content: space-between;
   height: 80px;
   padding: 0 2rem;
+
   /* background-color: black; */
+  /* width: 1400px; */
   background: transparent;
   /* background: linear-gradient(
     0deg,
     rgba(195, 34, 34, 1) 0%,
     rgba(0, 0, 0, 1) 100%
   ); */
-
+  /* border-bottom: 1px solid white; */
+  box-shadow: 5px 1px 5px white;
   color: var(--textColor);
 }
 
 nav a {
-  margin: 0 1rem;
-  color: var(--textColor);
+  margin: 0 2rem;
+  color: white;
   /* color: black; */
+
   font-weight: bold;
   text-decoration: none;
   /* font-size: 1.3rem; */
@@ -67,9 +74,7 @@ nav a {
   display: inline-block;
 
   /* height: 40px; */
-  border: 2px solid;
-  border-color: white; /* red top, green right, blue bottom and yellow left */
-  border-radius: 15px;
+
   background-color: transparent;
   padding: 6px;
 }
@@ -77,8 +82,8 @@ h3:hover {
   color: #fd5c63;
   font-size: 1.7rem;
   text-shadow: 1px 1px 1px #000, 3px 3px 5px white;
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
+  /* background-color: rgb(255, 255, 255); */
+  /* border-radius: 5px; */
 }
 h3 {
   color: white;
@@ -87,7 +92,7 @@ h3 {
 }
 
 nav a:hover {
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 22px;
 
@@ -116,11 +121,12 @@ header .navBtn {
 
 .authContainer {
   display: grid;
+  height: 100%;
   text-align: center;
   justify-content: center;
   align-items: center;
   margin-top: 36px;
-  background-color: #f8d4db;
+  background-color: whitesmoke;
   border-radius: 10%;
   border: 1px solid black;
   padding: 24px;
@@ -142,7 +148,7 @@ header .navBtn {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     gap: 1.5rem;
     /* background-color: var(--mainColor); */
@@ -158,7 +164,7 @@ header .navBtn {
     color: black;
     transition: 1s;
     transform: translateY(-100vh);
-    position: fixed; /* Add this line */
+    position: absolute; /* Add this line */
     z-index: 999; /* Add this line */
   }
 
@@ -191,17 +197,23 @@ header .navBtn {
     justify-content: center;
     align-items: center;
     margin-top: 36px;
-    background-color: #f8d4db;
+    background-color: whitesmoke;
     border-radius: 10%;
     border: 1px solid black;
     padding: 36px;
+  }
+  .prfCont{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .formContainer {
     width: 100%;
-    padding: 0 16px;
+    padding: 16px;
+    margin-bottom: 100px;
   }
 
   .bloodForm .ant-row {
@@ -230,13 +242,12 @@ header .navBtn {
     width: 120px;
     font-size: 16px;
     background-color: blue;
-
   }
   .custom-calendar {
     background-color: #f0f0f0; /* Replace with your desired background color */
     width: 100%; /* Adjust the width as needed */
     padding: 24px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,26 +257,55 @@ header .navBtn {
   .container {
     flex-direction: column;
   }
-  .graphs{
+  .graphs {
     padding: 12px;
-    width:170px;
+    width: 170px;
     height: 120vh;
   }
 
   .graph-item {
     order: 2;
   }
-  
+
   .history-docs {
     order: 1;
-   flex:1
+    flex: 1;
   }
-  .doc-item{
+  .doc-item {
     max-width: max-content;
   }
-
-
-
+  .firstCard {
+    max-width: min-content;
+    /* width: 100px; */
+  }
+  .row-home {
+    width: 400px;
+  }
+  .textCard {
+    font-size: 3px;
+    color: black;
+    padding: 20px;
+    margin: 24px;
+  }
+  .app {
+    overflow-x: hidden;
+  }
+  .footer {
+    position: fixed;
+    margin-top: 16px;
+  }
+  .circleContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .prfCont{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .circleItem{
+ 
+  } */
 }
 
 .mainImage {
@@ -281,16 +321,40 @@ header .navBtn {
 
 .homePage {
   /* display: flex; */
-  align-items: center;
-  justify-content: center;
+  /* height: 300px; */
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid whitesmoke; */
+  /* align-items: center; */
+  justify-content: space-between;
   text-align: center;
-
-  padding: 24px 0;
+  /* width: 80%; */
+  /* padding: 24px 0; */
   background: transparent;
+  opacity: 0.9;
+  /* margin: 40px;
+  box-shadow: 0 0 18px black; */
   /* background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(195,34,34,1) 100%); */
   /* background: linear-gradient(0deg, rgba(195,34,34,1) 0%, rgba(0,0,0,1) 100%); */
 }
 
+.homePage-btn {
+  font-size: 24px;
+  color: #a91101;
+  padding-inline: 16px;
+  padding-block: 4px;
+  background-color: white;
+  margin-top: 40px;
+  border: 3px solid #a91101;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.homePage-btn:hover {
+  background-color: #a91101;
+  color: white;
+}
 .heading {
   text-shadow: white 1px 0px 10px;
   color: white;
@@ -344,7 +408,7 @@ header .navBtn {
     justify-content: center;
     align-items: center;
     margin-top: 36px;
-    background-color: rgb(251, 210, 216);
+    background-color: white;
     border-radius: 5;
   }
   .container {
@@ -360,18 +424,51 @@ header .navBtn {
     width: 120px;
     font-size: 16px;
     background-color: blue;
-
   }
-  .card-docs{
+  .card-docs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
+  .firstCard {
+    flex-direction: column; /* Change flex direction to stack elements vertically on smaller screens */
+    align-items: center; /* Align items to the start of the container */
+    justify-content: space-around; /* Adjust spacing between elements */
+    padding-block: 20px; /* Add padding to the card on smaller screens */
+    /* padding-inline: 100px; */
+    margin-top: 24px;
+    width: 10%;
+  }
+  .firstCol {
+    padding: 24px;
+    margin: 50px;
+  }
+  .heartImage {
+    visibility: hidden;
+  }
+  .secondCard {
+    flex-direction: column; /* Change flex direction to stack elements vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start of the container */
+    justify-content: space-around; /* Adjust spacing between elements */
+    padding: 20px; /* Add padding to the card on smaller screens */
+    margin-block: 60px;
+    width: auto;
+    height: 100%;
+    font-size: 3px;
+  }
 
+  .textCard {
+    font-size: 24px;
+    color: black;
+  }
+  .prfCont{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
-
 
 .stockCard {
   align-items: center;
@@ -415,6 +512,7 @@ header .navBtn {
   font-weight: bold;
   margin-bottom: 32px;
   overflow-x: auto; /* Add horizontal scrolling for small screens */
+  box-shadow: 0 0 18px black;
 }
 
 .donated {
@@ -425,18 +523,25 @@ header .navBtn {
 }
 
 .formContainer {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid black; */
 }
 
 .bloodForm {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 64px;
+  margin-top: 30px;
   font-size: 24;
+  border: 2px solid white;
+  padding: 30px;
+  box-shadow: 0 0 18px black;
+  background-color: whitesmoke;
+  border-radius: 5px;
   /* font-weight: bold; */
 }
 
@@ -446,18 +551,19 @@ header .navBtn {
 }
 
 .footer {
-  position: relative;
   left: 0;
   font-size: 18px;
-  text-shadow: white 1px 2px;
+  /* text-shadow: transparent 1px 2px; */
 
   bottom: 0;
   right: 0;
   text-align: center;
   align-items: center;
-  color: #000000;
+  color: black;
   font-weight: bold;
   background-color: transparent;
+  text-shadow: 2px 2px 5px red;
+  /* padding: 24px; */
   /* background-image: linear-gradient(
     270deg,
     hsl(0deg 0% 100%) 0%,
@@ -475,9 +581,15 @@ header .navBtn {
   ); */
 }
 
+.prfCont {
+  display: flex;
+
+}
+
 /*Profile Page*/
 .profile-container {
   display: flex;
+  flex: 1;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -485,6 +597,8 @@ header .navBtn {
   padding-top: 50px;
 
   background-color: transparent;
+
+  /* border: 1px solid black; */
 }
 .profile-page {
   display: flex;
@@ -563,17 +677,17 @@ header .navBtn {
   gap: 20px;
 }
 .graphs {
-  border: 1px solid black;
+  border: 3px solid black;
   height: 100vh;
   width: 80%;
   flex: 1;
   flex-direction: column;
-  box-shadow: 5px 10px 10px white;
+  /* box-shadow: 5px 10px 10px white; */
   border-radius: 75px;
-
+  background-color: white;
 }
 .graph-item {
-margin-top: 24px;
+  margin-top: 24px;
 }
 .history-docs {
   border: 1px solid black;
@@ -584,13 +698,14 @@ margin-top: 24px;
   width: 80%;
   padding-inline: 36px;
   margin-bottom: 24px;
+  border: 3px solid black;
 }
 
 .docs-fields {
   margin: 16px;
 }
 .doc-item {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 1%;
   margin-top: 12px;
   background-color: transparent;
@@ -635,24 +750,21 @@ margin-top: 24px;
   color: white;
 }
 
-.choose-hours{
+.choose-hours {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
   margin-top: 36px;
   background-color: white;
-  
-
 }
-.hour-row{
+.hour-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
 }
 
-.hour-item{
+.hour-item {
   border: 1px solid black;
   width: 100px;
   height: 50px;
@@ -660,7 +772,7 @@ margin-top: 24px;
   align-items: center;
 }
 
-.hour-item:hover{
+.hour-item:hover {
   border: 2px solid black;
   width: 100px;
   height: 50px;
@@ -668,20 +780,18 @@ margin-top: 24px;
   font-weight: bold;
 }
 
-
-.hour-item-btn{
-background-color: transparent;
-border: none
-
-;}
+.hour-item-btn {
+  background-color: transparent;
+  border: none;
+}
 
 /* .mainContainerCal{
   display: grid;
   grid-template-columns: 20% 50% 30% ;
 
 } */
-.exist-days{
-display: inline;
+.exist-days {
+  display: inline;
   background-color: transparent;
   font-family: Arial, sans-serif;
   margin-top: 24px;
@@ -694,34 +804,27 @@ display: inline;
   padding-top: 24px;
   align-items: center;
   justify-content: center;
-
 }
-.forcast{
-  
-
+.forcast {
   font-family: Arial, sans-serif;
 
   border: 4px solid black;
-
 }
 
-.trash-card{
+.trash-card {
   display: flex;
   /* flex-direction: row; */
   justify-content: center;
   align-items: center;
 }
-.trash-icon{
+.trash-icon {
   color: black;
   border: none;
   border-radius: 25%;
-
-  
 }
-.trash-icon:hover{
+.trash-icon:hover {
   color: red;
   background-color: white;
-  
 }
 
 .card-docs {
@@ -738,4 +841,88 @@ display: inline;
   border: 1px solid black;
   box-shadow: 5px 10px 10px rgba(242, 252, 255, 0.807);
   flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage as needed */
+}
+
+.row-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: "#A91101";
+  height: 80vh;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+.firstCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: "#A91101";
+  box-shadow: 0 0 5px white;
+  width: 100%; /* Use percentage instead of fixed width */
+  max-width: 1400px; /* Set a maximum width to avoid excessive stretching on large screens */
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 158, 158, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border-radius: 5px;
+}
+.secondCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 5px white;
+  width: 100%; /* Use percentage instead of fixed width */
+  max-width: 1400px; /* Set a maximum width to avoid excessive stretching on large screens */
+  opacity: 0.95;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 157, 157, 1) 50%,
+    rgba(255, 0, 0, 1) 100%
+  );
+  border-radius: 5px;
+}
+.firstCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+  flex-direction: column;
+}
+
+.textCard {
+  font-size: 60px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px black;
+  margin-bottom: 24px;
+}
+
+.circleItem {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 40px;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 18px black;
+}
+.circleItem:hover {
+  box-shadow: 0 0 18px black;
+
+  background-color: #db2b39;
+}
+
+.circleContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
 }

@@ -18,6 +18,8 @@ import { UserContext } from "./context/UserContext";
 import Profile from "./DonorScreens/Profile";
 import History from "./DonorScreens/History";
 import Diary from "./DonorScreens/Diary";
+import NewsLetter from "./components/NewsLetter";
+import MoreInfo from "./Screens/MoreInfo";
 // import { UserContext } from "./context/UserContext";
 
 const { Footer } = Layout;
@@ -41,6 +43,9 @@ const App = () => {
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/history" element={<History userDet />} />
           <Route exact path="/diary" element={<Diary />} />
+          <Route exact path="/news" element={<NewsLetter />} />
+          <Route exact path="/moreInfo" element={<MoreInfo />} />
+
         </>
       );
     } else if (
@@ -55,6 +60,9 @@ const App = () => {
           <Route exact path="/getblood" element={<GetBlood />} />
           <Route exact path="/stock" element={<StockInfo />} />
           <Route exact path="/logInfo" element={<GetDataPDFile />} />
+          <Route exact path="/news" element={<NewsLetter />} />
+          <Route exact path="/moreInfo" element={<MoreInfo />} />
+
         </>
       );
     } else {
