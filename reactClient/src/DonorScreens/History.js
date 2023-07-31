@@ -23,7 +23,7 @@ const History = (route) => {
   useEffect(() => {
     const getAllDonation = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5500/api/donation");
+        const res = await axios.get("https://blood-bank-2023.onrender.com/api/donation");
         // console.log(res)
         setListOfDonation(res.data);
         console.log("History Fetch", listOfDonation);
@@ -42,7 +42,7 @@ const History = (route) => {
         try {
           listOfDonation.forEach(async (item) => {
             const response = await axios.get(
-              `http://127.0.0.1:5500/api/decrypt/${encodeURIComponent(
+              `https://blood-bank-2023.onrender.com/api/decrypt/${encodeURIComponent(
                 item.donorId
               )}`
             );

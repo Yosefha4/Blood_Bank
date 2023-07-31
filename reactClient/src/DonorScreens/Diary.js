@@ -27,7 +27,7 @@ const Diary = () => {
   useEffect(() => {
     const fetchCalendar = async () => {
       try {
-        const currentDays = await axios.get("http://127.0.0.1:5500/api/calendar");
+        const currentDays = await axios.get("https://blood-bank-2023.onrender.com/api/calendar");
         setDayList(currentDays.data);
         // console.log(currentDays.data);
         const newTemp = currentDays.data;
@@ -78,7 +78,7 @@ const Diary = () => {
     console.log(newObject);
 
     try {
-      const response = await axios.post("http://127.0.0.1:5500/api/calendar", {
+      const response = await axios.post("https://blood-bank-2023.onrender.com/api/calendar", {
         dayDate: newObject.dayDate,
         chooseHour: newObject.hourDate,
         userUid: newObject.userId,
@@ -92,7 +92,7 @@ const Diary = () => {
   const handleDelete = async (item) => {
     try {
       const deletedItem = await axios.delete(
-        `http://127.0.0.1:5500/api/calendar/${item._id}`
+        `https://blood-bank-2023.onrender.com/api/calendar/${item._id}`
       );
       console.log("Calendar Deleted Successfully", deletedItem);
     } catch (error) {

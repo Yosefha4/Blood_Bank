@@ -56,7 +56,7 @@ const Profile = () => {
         //     // Perform any additional actions with the response here
         //   });
 
-        const response = await axios.get("http://127.0.0.1:5500/api/logInfo");
+        const response = await axios.get("https://blood-bank-2023.onrender.com/api/logInfo");
         // setUserName(response.data.currUser.fullName)
         // setUserEmail(response.data.currUser.email)
         const filteredList = response.data.filter((item) => item.email);
@@ -119,7 +119,7 @@ const Profile = () => {
       userID.length > 0 &&
         (await axios
           .get(
-            `http://127.0.0.1:5500/api/decrypt/${encodeURIComponent(userID)}`
+            `https://blood-bank-2023.onrender.com/api/decrypt/${encodeURIComponent(userID)}`
           )
           .then((response) => {
             const { decryptedValue1 } = response.data;

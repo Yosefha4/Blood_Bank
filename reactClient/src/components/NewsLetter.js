@@ -23,7 +23,7 @@ const NewsLetter = () => {
     console.log("Start Handle !");
 
     try {
-      const res = await axios.post("http://localhost:5500/api/newsLetter", {
+      const res = await axios.post("https://blood-bank-2023.onrender.com/api/newsLetter", {
         userEmail: userEmail,
       });
       console.log(res.status);
