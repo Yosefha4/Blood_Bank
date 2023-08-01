@@ -2,7 +2,7 @@
 The Blood Bank web application is a comprehensive platform that streamlines blood donation and supply management. It provides an intuitive user interface for donors to easily register, schedule appointments, and access their donation history. Additionally, administrators benefit from a robust management interface to oversee inventory, track donations, handle requests, and generate reports. The application ensures efficient blood supply distribution, fostering a seamless process for both donors and healthcare facilities.
 
 
-[[Blood Bank Application Video]](https://www.youtube.com/watch?v=ZG9EQIlboA8)
+[[Blood Bank Application Video]](https://www.youtube.com/watch?v=cyKts9Lh1jw)
 
 
 
