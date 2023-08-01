@@ -27,7 +27,7 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:5500/api/getUser/" + uID
+          "https://blood-bank-2023.onrender.com/api/getUser/" + uID
         );
         setUserName(response.data.currUser.fullName);
         setUserEmail(response.data.currUser.email);

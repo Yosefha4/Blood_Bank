@@ -747,7 +747,8 @@ header .navBtn {
 }
 .cal-btn:hover {
   background-color: transparent;
-  color: white;
+  color: black;
+  
 }
 
 .choose-hours {
